@@ -108,10 +108,44 @@ const arrWithMap = [
     { firstName: 'Logina', lastName: 'Consol`evna', age: 42, gender: 'female', }
 ];
 
-const resultArrMap = arrWithMap.map(function(element){
+const resultArrMap = arrWithMap.map(function (element) {
     const telephoneNumber = structuredClone(element);
     telephoneNumber.teleN = Math.round(Math.random() * (1000000000 - 1000000) + 1000000);
     return telephoneNumber;
 });
 
 // console.log(resultArrMap);
+
+// Дан массив со следующими объектами внутри:                      
+// {firstName: ‘Test’, lastName: ’Testovich’, age: 27, gender: ‘male’,},             
+// {firstName: ‘User’, lastName: ’Userovich’, age: 12, gender: ‘male’,},        
+// {firstName: ‘Test`ya’, lastName: ’Testovna’, age: 16, gender: ‘female’,},        
+// {firstName: ‘Logina’, lastName: ’Consol`evna’, age: 42, gender: ‘female’,},        
+// {firstName: ‘Undefined’, lastName: ’Undefinovich’, age: 99},            
+// {firstName: ‘Null’, lastName: ’Nullovich’, gender: ‘male’}                
+// Создайте новый массив на основании старого массива, в котором будут только те совершеннолетние пользователи, у которых будет определенный пол.
+
+const arrWithFilter = [
+    { firstName: 'Test', lastName: 'Testovich', age: 42, gender: 'male', },
+    { firstName: 'User', lastName: 'Userovich', age: 12, gender: 'male', },
+    { firstName: 'Test`ya', lastName: 'Testovna', age: 16, gender: 'female', },
+    { firstName: 'Logina', lastName: 'Consol`evna', age: 42, gender: 'female', },
+    { firstName: 'Undefined', lastName: 'Undefinovich', age: 99 },
+    { firstName: 'Null', lastName: 'Nullovich', gender: 'male' }
+];
+
+const arrResultFilter = arrWithFilter.filter(function (element) {
+    if (element.age >= 18 && 'gender' in element) {
+        return element;
+    };
+
+});
+
+// console.log(arrResultFilter);
+
+//Дан следующий массив [1,2,3, [10,20,30, [100,200,300, [1000, 2000, 3000]]]]. 
+//Создайте новый массив на основании старого массива, в котором не будет вложенных массивов.
+
+const arrFlat = [1,2,3, [10,20,30, [100,200,300, [1000, 2000, 3000]]]];
+const arrFlatResult = arrFlat.flat(Infinity);
+// console.log(arrFlatResult);
